@@ -1,0 +1,76 @@
+Voting Smart Contract
+
+This project is an interactive smart contract built with Solidity that demonstrates a basic airdrop system. The contract allows the owner to whitelist users with predefined token amounts and enables users to claim their airdropped tokens.
+Features
+
+    Whitelist Management: The owner can add multiple users to the whitelist with specific token amounts.
+    Token Claiming: Users can claim their allocated tokens.
+    Tracking Claims: The contract tracks whether a user has already claimed their tokens.
+
+Prerequisites
+
+    Node.js: Ensure Node.js is installed on your system.
+    Hardhat: Install Hardhat by running npm install --save-dev hardhat.
+    Sepolia Testnet: Use a Sepolia wallet and test ETH for deployment and interaction.
+
+Contract Overview
+Contract Address
+
+Replace with the deployed contract address on Sepolia.
+Key Functions
+
+    addToWhitelist(address[] memory recipients, uint[] memory amounts)
+    Adds users to the whitelist with corresponding airdrop amounts (owner-only).
+
+    claimTokens()
+    Enables a whitelisted user to claim their tokens.
+
+    getAirdropAmount(address user)
+    Returns the remaining airdrop amount for a user.
+
+Deployment
+
+    Clone the repository:
+
+git clone <repository-link>
+cd <repository-directory>
+
+Install dependencies:
+
+npm install
+
+Deploy the contract:
+
+    npx hardhat run scripts/deploy.js --network sepolia
+
+    Note the deployed contract address printed in the console.
+
+Testing
+
+Run tests using Hardhat:
+
+npx hardhat test
+
+Interaction
+Using Hardhat Console
+
+    Start the Hardhat console:
+
+npx hardhat console --network sepolia
+
+Interact with the contract:
+
+const contract = await ethers.getContractAt("Voting", "<deployed-contract-address>");
+
+Example interaction:
+
+    await contract.addToWhitelist(["0x..."], [100]);
+
+Documentation
+
+This contract is well-documented within the code. Refer to comments for a deeper understanding of the logic and structure.
+Repository Structure
+
+    contracts/: Contains the Solidity contract.
+    scripts/: Deployment script for the contract.
+    test/: Basic test cases for the contract.
